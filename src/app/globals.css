@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  color: white;
+  background-color: #111;
+}
+
+#slick-container .slick-track {
+  display: flex;
+  gap: 10px;
+}
