@@ -53,7 +53,7 @@ export default function MultiCarousel({ children }: Props) {
   };
 
   return (
-    <div className="px-20 mt-5" id="slick-container">
+    <div className="mt-5" id="slick-container">
       <Slider {...settings}>{children}</Slider>
     </div>
   );

@@ -10,5 +10,5 @@ export const options = {
   }
 };
 
-export const popularUrl = `${TMDB_API}/movie/popular?api_key=${process.env.TMDB_API_KEY}&language=ko-KR&page=1`;
-export const upcomingUrl = `${TMDB_API}/movie/upcoming?api_key=${process.env.TMDB_API_KEY}&language=ko-KR&page=1`;
+export const popularUrl = `${TMDB_API}/movie/popular?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}&language=ko-KR&page=1`;
+export const upcomingUrl = `${TMDB_API}/movie/upcoming?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}&language=ko-KR&page=1`;

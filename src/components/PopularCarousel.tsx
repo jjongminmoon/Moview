@@ -12,12 +12,12 @@ export default function PopularCarousel() {
   const topRated = data?.slice(0, 5);
 
   return (
-    <section className="pt-8">
+    <section className="pt-8 px-20">
       <h1 className="text-2xl font-semibold text-center">이달의 영화</h1>
       <MultiCarousel>
         {topRated &&
           topRated.map((movie) => (
-            <Link key={movie.id} href={`${movie.id}`}>
+            <Link key={movie.id} href={String(movie.id)}>
               <Image
                 className="rounded-xl w-auto max-h-[450px]"
                 src={IMG_API + movie.poster_path}
