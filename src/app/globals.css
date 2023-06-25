@@ -12,3 +12,19 @@ body {
   display: flex;
   gap: 10px;
 }
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  background-color: red;
+  background-clip: padding-box;
+  border: 1px solid transparent;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 8px;
+  background-color: black;
+}

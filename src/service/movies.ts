@@ -6,13 +6,19 @@ export const getMovieDetail = (movie_id: string) => {
   return url;
 };
 
+export const getMovieCredit = (movie_id: string) => {
+  const url = `${TMDB_API}/movie/${movie_id}/credits?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}&language=ko-KR&`;
+
+  return url;
+};
+
 export const getSimilarMovie = (movie_id: string) => {
   const url = `${TMDB_API}/movie/${movie_id}/similar?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}&language=ko-KR&`;
 
   return url;
 };
 
-export const getSearchResult = (title: string) => {
+export const getMovieSearchResult = (title: string) => {
   const url = `${TMDB_API}/search/movie?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}&language=ko-KR&query=${title}`;
 
   return url;

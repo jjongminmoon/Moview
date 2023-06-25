@@ -5,44 +5,52 @@ import noImage from "../../public/images/no-image.webp";
 import useSWR from "swr";
 import axios from "axios";
 import InfoBanner from "./ui/InfoBanner";
+import CreditInfo from "./CreditInfo";
 import { IMG_API } from "@/api/movies";
-import { DetailProps } from "@/model/movies";
-import { getMovieDetail } from "@/service/movies";
+import { CreditProps, DetailProps } from "@/model/movies";
+import { getMovieCredit, getMovieDetail } from "@/service/movies";
 
 type Props = {
   detail: string;
 };
 
 export default function MovieInfo({ detail }: Props) {
-  const { data, isLoading } = useSWR<DetailProps>(
-    "fetch",
+  const { data: movie, isLoading } = useSWR<DetailProps>(
+    "movie",
     async () => await axios.get(getMovieDetail(detail)).then((response) => response.data)
   );
+  const { data: credit } = useSWR<CreditProps>(
+    "credit",
+    async () => await axios.get(getMovieCredit(detail)).then((response) => response.data)
+  );
+
+  console.log(credit);
 
   return (
-    <article className="relative w-full">
-      <div className="flex gap-10 max-h-[650px]">
+    <>
+      <article className="w-full flex gap-10 sm:flex-col sm:items-center sm:gap-2">
         <Image
-          className="w-2/5 h-auto rounded-xl"
-          src={data?.poster_path ? IMG_API + data.poster_path : noImage}
-          alt={`${data?.title} 포스터`}
+          className="w-2/5 h-auto rounded-xl sm:w-3/5"
+          src={movie?.poster_path ? IMG_API + movie.poster_path : noImage}
+          alt={`${movie?.title} 포스터`}
           width={500}
           height={200}
           priority
         />
-        <div className="flex-col justify-center w-full h-full">
-          <h1 className="text-4xl">{data?.title}</h1>
-          <h2 className="text-xl text-neutral-400">&nbsp;{data?.original_title}</h2>
-          <p>&nbsp;{data?.release_date}</p>
-          <p>⭐ {Number(data?.vote_average).toFixed(1)}</p>
+        <div className="flex-col w-full h-full sm:text-center">
+          <h1 className="text-4xl sm:text-xl">{movie?.title}</h1>
+          <h2 className="text-xl text-neutral-400 sm:text-sm">&nbsp;{movie?.original_title}</h2>
+          <p className="sm:text-xs">&nbsp;{movie?.release_date}</p>
+          <p className="sm:text-xs">⭐ {Number(movie?.vote_average).toFixed(1)}</p>
           <InfoBanner>장르</InfoBanner>
-          <ul className="flex gap-5">
-            {data?.genres && data?.genres.map((genre) => <li key={genre.id}>{genre.name}</li>)}
+          <ul className="flex gap-5 sm:justify-center sm:text-sm">
+            {movie?.genres && movie?.genres.map((genre) => <li key={genre.id}>{genre.name}</li>)}
           </ul>
           <InfoBanner>줄거리</InfoBanner>
-          <p>{data?.overview}</p>
+          <p className="sm:text-xs">{movie?.overview}</p>
         </div>
-      </div>
-    </article>
+      </article>
+      <CreditInfo credit={credit} />
+    </>
   );
 }

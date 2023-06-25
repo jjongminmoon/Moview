@@ -36,3 +36,25 @@ export type DetailProps = {
   vote_average: number;
   vote_count: number;
 };
+
+export interface CreditProps {
+  id: number;
+  cast: [
+    {
+      id: number;
+      gender: number;
+      name: string;
+      profile_path: string;
+      character: string;
+      order: number;
+    }
+  ];
+  crew: [
+    {
+      id: number;
+      name: string;
+      job: string;
+      profile_path: string;
+    }
+  ];
+}
