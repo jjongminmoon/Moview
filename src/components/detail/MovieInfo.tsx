@@ -1,12 +1,12 @@
 "use client";
 
 import Image from "next/image";
-import noImage from "../../public/images/no-image.webp";
+import upComing from "../../../public/images/up-coming.webp";
 import useSWR from "swr";
 import axios from "axios";
-import InfoBanner from "./ui/InfoBanner";
+import InfoBanner from "../ui/InfoBanner";
 import CreditInfo from "./CreditInfo";
-import { IMG_API } from "@/api/movies";
+import { IMG_API } from "@/app/api/movies/movies";
 import { CreditProps, DetailProps } from "@/model/movies";
 import { getMovieCredit, getMovieDetail } from "@/service/movies";
 
@@ -24,14 +24,12 @@ export default function MovieInfo({ detail }: Props) {
     async () => await axios.get(getMovieCredit(detail)).then((response) => response.data)
   );
 
-  console.log(credit);
-
   return (
     <>
       <article className="w-full flex gap-10 sm:flex-col sm:items-center sm:gap-2">
         <Image
           className="w-2/5 h-auto rounded-xl sm:w-3/5"
-          src={movie?.poster_path ? IMG_API + movie.poster_path : noImage}
+          src={movie?.poster_path ? IMG_API + movie.poster_path : upComing}
           alt={`${movie?.title} 포스터`}
           width={500}
           height={200}

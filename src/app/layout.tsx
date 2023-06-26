@@ -3,6 +3,7 @@ import "./globals.css";
 import { Open_Sans } from "next/font/google";
 import SWRConfigContext from "@/context/SWRConfigContext";
 import Footer from "@/components/Footer";
+import AuthContext from "@/context/AuthContext";
 
 const sans = Open_Sans({ subsets: ["latin"] });
 
@@ -15,13 +16,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={sans.className}>
       <body>
-        <header>
-          <Navbar />
-        </header>
-        <SWRConfigContext>{children}</SWRConfigContext>
-        <footer>
-          <Footer />
-        </footer>
+        <AuthContext>
+          <header>
+            <Navbar />
+          </header>
+          <main className="min-h-screen">
+            <SWRConfigContext>{children}</SWRConfigContext>
+          </main>
+          <footer>
+            <Footer />
+          </footer>
+        </AuthContext>
       </body>
     </html>
   );

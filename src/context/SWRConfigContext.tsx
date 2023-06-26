@@ -1,7 +1,7 @@
 "use client";
 
 import axios from "axios";
-import { options } from "@/api/movies";
+import { options } from "@/app/api/movies/movies";
 import { SWRConfig } from "swr";
 
 type Props = {

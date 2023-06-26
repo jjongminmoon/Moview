@@ -1,9 +1,9 @@
 "use client";
 
 import useSWR from "swr";
-import MultiCarousel from "./ui/MulitCarousel";
+import MultiCarousel from "../ui/MulitCarousel";
 import Image from "next/image";
-import { IMG_API, popularUrl } from "@/api/movies";
+import { IMG_API, popularUrl } from "@/app/api/movies/movies";
 import { TmdbProps } from "@/model/movies";
 import Link from "next/link";
 

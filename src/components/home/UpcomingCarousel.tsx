@@ -1,16 +1,14 @@
 "use client";
 
-import { IMG_API, upcomingUrl } from "@/api/movies";
-import { TmdbProps } from "@/model/movies";
 import Image from "next/image";
 import useSWR from "swr";
-import MultiCarousel from "./ui/MulitCarousel";
 import Link from "next/link";
+import MultiCarousel from "../ui/MulitCarousel";
+import { IMG_API, upcomingUrl } from "@/app/api/movies/movies";
+import { TmdbProps } from "@/model/movies";
 
 export default function UpcomingCarousel() {
   const { data, isLoading } = useSWR<TmdbProps[]>(upcomingUrl);
-
-  console.log(data);
 
   return (
     <section className="mt-8 px-20">

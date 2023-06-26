@@ -1,4 +1,4 @@
-import MovieSearch from "@/components/MovieSearch";
+import MovieSearch from "@/components/search/MovieSearch";
 import Section from "@/components/ui/Section";
 
 export default function SearchPage() {

@@ -1,5 +1,5 @@
-import PopularCarousel from "@/components/PopularCarousel";
-import UpcomingCarousel from "@/components/UpcomingCarousel";
+import PopularCarousel from "@/components/home/PopularCarousel";
+import UpcomingCarousel from "@/components/home/UpcomingCarousel";
 
 export default function HomePage() {
   return (

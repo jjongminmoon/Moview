@@ -1,5 +1,10 @@
+"use client";
+
 import Link from "next/link";
 import Section from "./ui/Section";
+import LogButton from "./ui/LogButton";
+import { signIn, signOut, useSession } from "next-auth/react";
+import Avatar from "./Avatar";
 
 const navList = [
   { title: "홈", path: "/" },
@@ -8,15 +13,30 @@ const navList = [
 ];
 
 export default function Navbar() {
+  const { data: session } = useSession();
+  const user = session?.user;
+
   return (
     <Section className="flex items-center justify-between h-16 bg-stone-950">
       <h1 className="text-3xl text-red-600 font-black italic font-mono">Moview</h1>
-      <nav className="flex gap-10">
+      <nav className="flex gap-10 items-center">
         {navList.map((list) => (
           <Link key={list.title} href={list.path} className="hover:text-red-600">
             {list.title}
           </Link>
         ))}
+        <div className="flex gap-5">
+          {user && (
+            <Link href={`/user/${user.username}`}>
+              <Avatar image={user.image} />
+            </Link>
+          )}
+          {session ? (
+            <LogButton onClick={() => signOut()}>Logout</LogButton>
+          ) : (
+            <LogButton onClick={() => signIn()}>Login</LogButton>
+          )}
+        </div>
       </nav>
     </Section>
   );

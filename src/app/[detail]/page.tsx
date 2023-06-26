@@ -1,6 +1,6 @@
 import Section from "@/components/ui/Section";
-import MovieInfo from "@/components/MovieInfo";
-import SimilarMovieCarousel from "@/components/SimilarMovieCarousel";
+import MovieInfo from "@/components/detail/MovieInfo";
+import SimilarMovieCarousel from "@/components/detail/SimilarMovieCarousel";
 
 type Props = {
   params: {

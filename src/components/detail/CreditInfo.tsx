@@ -1,8 +1,8 @@
-import { IMG_API } from "@/api/movies";
+import { IMG_API } from "@/app/api/movies/movies";
 import { CreditProps } from "@/model/movies";
 import Image from "next/image";
-import noImage from "../../public/images/no-image.webp";
-import InfoBanner from "./ui/InfoBanner";
+import upComing from "../../../public/images/up-coming.webp";
+import InfoBanner from "../ui/InfoBanner";
 
 type Props = {
   credit: CreditProps | undefined;
@@ -18,7 +18,7 @@ export default function CreditInfo({ credit }: Props) {
             <li key={index} className="flex flex-col w-[120px] items-center shrink-0">
               <Image
                 className="w-[100px] h-[100px] rounded-full object-cover"
-                src={person.profile_path ? IMG_API + person.profile_path : noImage}
+                src={person.profile_path ? IMG_API + person.profile_path : upComing}
                 alt={`${person.name} 이미지`}
                 width={500}
                 height={500}
@@ -35,7 +35,7 @@ export default function CreditInfo({ credit }: Props) {
             <li key={index} className="flex flex-col w-[120px] items-center shrink-0">
               <Image
                 className="w-[100px] h-[100px] rounded-full object-cover"
-                src={person.profile_path ? IMG_API + person.profile_path : noImage}
+                src={person.profile_path ? IMG_API + person.profile_path : upComing}
                 alt={`${person.name} 이미지`}
                 width={500}
                 height={500}
