@@ -23,18 +23,6 @@ export default {
       name: 'image',
       type: 'string',
     },
-    {
-      title: 'Bookmarks',
-      name: 'bookmarks',
-      type: 'array',
-      of: [
-        {
-          type: 'reference',
-          to: [{type: 'post'}],
-        },
-      ],
-      validation: (Rule) => Rule.unique(),
-    },
   ],
   preview: {
     select: {

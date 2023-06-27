@@ -1,10 +1,11 @@
+import { getLikedPostsOf, getPostsOf } from "@/service/posts";
+import { NextRequest, NextResponse } from "next/server";
+
 type Context = {
   params: {
     slug: string[];
   };
 };
-
-import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(_: NextRequest, context: Context) {
   const { slug } = context.params;
@@ -15,9 +16,9 @@ export async function GET(_: NextRequest, context: Context) {
 
   const [username, query] = slug;
 
-  let request = getPostOf;
-  if (type === "liked") {
-    request = getLikePostOf;
+  let request = getPostsOf;
+  if (query === "liked") {
+    request = getLikedPostsOf;
   }
 
   return request(username).then((data) => NextResponse.json(data));

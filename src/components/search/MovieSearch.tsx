@@ -18,7 +18,7 @@ export default function MovieSearch() {
 
   return (
     <>
-      <SearchInput searchValue={searchValue} setSearchValue={setSearchValue} />
+      <SearchInput searchValue={searchValue} setSearchValue={setSearchValue} icon="use" />
       {data && data.length > 0 ? (
         <div className="grid grid-cols-4 gap-2 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2">
           {data.map((movies) => (

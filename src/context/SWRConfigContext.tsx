@@ -6,13 +6,15 @@ import { SWRConfig } from "swr";
 
 type Props = {
   children: React.ReactNode;
+  options?: any;
 };
 
-export default function SWRConfigContext({ children }: Props) {
+export function SWRConfigContext({ children }: Props) {
   return (
     <SWRConfig
       value={{
-        fetcher: (url: string) => axios.get(url, options).then((response) => response.data.results)
+        fetcher: (url: string) =>
+          axios.get(url, options).then((response) => response.data.results || response.data)
       }}
     >
       {children}

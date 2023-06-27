@@ -21,7 +21,7 @@ export default async function SignInPage({ searchParams: { callbackUrl } }: Prop
 
   return (
     <section className="flex justify-center pt-72">
-      <SignIn providers={providers} callbackUrl={callbackUrl} />
+      <SignIn providers={providers} callbackUrl={callbackUrl ?? "/"} />
     </section>
   );
 }

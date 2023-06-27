@@ -1,6 +1,4 @@
 import { ProfileUser } from "@/model/user";
-import Section from "../ui/Section";
-import Image from "next/image";
 import Avatar from "../Avatar";
 
 type Props = {

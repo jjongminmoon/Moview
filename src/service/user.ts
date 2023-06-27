@@ -15,12 +15,20 @@ export async function addUser({ id, username, email, name, image }: OAuthUser) {
     username,
     email,
     name,
-    image,
-    bookmarks: []
+    image
   });
 }
 
-export async function getUserProfile(username: string) {
+export async function getUserByUsername(username: string) {
+  return client.fetch(
+    `*[_type == "user" && username == "${username}"][0]{
+      ...,
+      "id":_id,
+    }`
+  );
+}
+
+export async function getUserForProfile(username: string) {
   return client
     .fetch(
       `*[_type == "user" && username == "${username}"][0]{

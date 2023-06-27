@@ -1,9 +1,9 @@
 import Navbar from "@/components/Navbar";
 import "./globals.css";
 import { Open_Sans } from "next/font/google";
-import SWRConfigContext from "@/context/SWRConfigContext";
 import Footer from "@/components/Footer";
 import AuthContext from "@/context/AuthContext";
+import { SWRConfigContext } from "@/context/SWRConfigContext";
 
 const sans = Open_Sans({ subsets: ["latin"] });
 
@@ -17,7 +17,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={sans.className}>
       <body>
         <AuthContext>
-          <header>
+          <header className="sticky top-0 z-10">
             <Navbar />
           </header>
           <main className="min-h-screen">
@@ -27,6 +27,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <Footer />
           </footer>
         </AuthContext>
+        <div id="portal" />
       </body>
     </html>
   );

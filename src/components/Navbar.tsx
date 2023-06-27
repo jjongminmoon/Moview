@@ -5,6 +5,7 @@ import Section from "./ui/Section";
 import LogButton from "./ui/LogButton";
 import { signIn, signOut, useSession } from "next-auth/react";
 import Avatar from "./Avatar";
+import NewIcon from "./icons/NewIcon";
 
 const navList = [
   { title: "홈", path: "/" },
@@ -25,7 +26,10 @@ export default function Navbar() {
             {list.title}
           </Link>
         ))}
-        <div className="flex gap-5">
+        <div className="flex gap-5 items-center">
+          <Link href="/new" className="hover:text-red-600">
+            <NewIcon />
+          </Link>
           {user && (
             <Link href={`/user/${user.username}`}>
               <Avatar image={user.image} />

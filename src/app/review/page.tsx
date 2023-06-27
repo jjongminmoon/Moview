@@ -1,3 +1,5 @@
+import Section from "@/components/ui/Section";
+
 export default function ReviewPage() {
-  return <h1>Review</h1>;
+  return <Section>review</Section>;
 }
