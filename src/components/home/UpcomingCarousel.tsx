@@ -6,13 +6,14 @@ import Link from "next/link";
 import MultiCarousel from "../ui/MulitCarousel";
 import { IMG_API, upcomingUrl } from "@/app/api/movies/movies";
 import { TmdbProps } from "@/model/movies";
+import Title from "../ui/Title";
 
 export default function UpcomingCarousel() {
   const { data, isLoading } = useSWR<TmdbProps[]>(upcomingUrl);
 
   return (
     <section className="mt-8 px-20">
-      <h1 className="text-2xl font-semibold text-center">개봉 예정 영화</h1>
+      <Title>개봉 예정 영화</Title>
       <MultiCarousel>
         {data &&
           data.map((movie) => (

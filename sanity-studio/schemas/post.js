@@ -12,7 +12,22 @@ export default {
     {
       title: 'Photo',
       name: 'photo',
-      type: 'image',
+      type: 'string',
+    },
+    {
+      title: 'MovieTitle',
+      name: 'movieTitle',
+      type: 'string',
+    },
+    {
+      title: 'PostTitle',
+      name: 'postTitle',
+      type: 'string',
+    },
+    {
+      title: 'Content',
+      name: 'content',
+      type: 'string',
     },
     {
       title: 'Likes',
@@ -54,17 +69,15 @@ export default {
   ],
   preview: {
     select: {
-      title: 'comments.0.comment',
+      title: 'postTitle',
       authorName: 'author.name',
       authorUsername: 'author.username',
-      media: 'photo',
     },
     prepare(selection) {
-      const {title, authorName, authorUsername, media} = selection
+      const {title, authorName, authorUsername} = selection
       return {
         title,
         subtitle: `by ${authorName} (${authorUsername})`,
-        media,
       }
     },
   },

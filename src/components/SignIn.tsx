@@ -1,6 +1,6 @@
 "use client";
 
-import LogButton from "./ui/LogButton";
+import Button from "./ui/Button";
 import { ClientSafeProvider, signIn } from "next-auth/react";
 
 type Props = {
@@ -12,9 +12,9 @@ export default function SignIn({ providers, callbackUrl }: Props) {
   return (
     <>
       {Object.values(providers).map(({ name, id }) => (
-        <LogButton key={id} onClick={() => signIn(id, { callbackUrl })} size="big">
+        <Button key={id} onClick={() => signIn(id, { callbackUrl })} size="big">
           Sign In With {name}
-        </LogButton>
+        </Button>
       ))}
     </>
   );

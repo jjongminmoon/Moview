@@ -2,10 +2,10 @@
 
 import Link from "next/link";
 import Section from "./ui/Section";
-import LogButton from "./ui/LogButton";
 import { signIn, signOut, useSession } from "next-auth/react";
 import Avatar from "./Avatar";
 import NewIcon from "./icons/NewIcon";
+import Button from "./ui/Button";
 
 const navList = [
   { title: "홈", path: "/" },
@@ -36,9 +36,9 @@ export default function Navbar() {
             </Link>
           )}
           {session ? (
-            <LogButton onClick={() => signOut()}>Logout</LogButton>
+            <Button onClick={() => signOut()}>Logout</Button>
           ) : (
-            <LogButton onClick={() => signIn()}>Login</LogButton>
+            <Button onClick={() => signIn()}>Login</Button>
           )}
         </div>
       </nav>

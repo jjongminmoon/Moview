@@ -6,6 +6,7 @@ import Image from "next/image";
 import { IMG_API, popularUrl } from "@/app/api/movies/movies";
 import { TmdbProps } from "@/model/movies";
 import Link from "next/link";
+import Title from "../ui/Title";
 
 export default function PopularCarousel() {
   const { data, isLoading } = useSWR<TmdbProps[]>(popularUrl);
@@ -13,7 +14,7 @@ export default function PopularCarousel() {
 
   return (
     <section className="pt-8 px-20">
-      <h1 className="text-2xl font-semibold text-center">이달의 영화</h1>
+      <Title>이달의 영화</Title>
       <MultiCarousel>
         {topRated &&
           topRated.map((movie) => (

@@ -7,10 +7,11 @@ import { Dispatch, SetStateAction } from "react";
 type Props = {
   data: TmdbProps[] | undefined;
   setImage: Dispatch<SetStateAction<string>>;
+  setMovieTitle: Dispatch<SetStateAction<string>>;
   setOpenModal: Dispatch<SetStateAction<boolean>>;
 };
 
-export default function AutoComplete({ data, setImage, setOpenModal }: Props) {
+export default function AutoComplete({ data, setImage, setMovieTitle, setOpenModal }: Props) {
   return (
     <div className="grid grid-cols-5 gap-2 w-full h-[80%] overflow-y-auto">
       {data &&
@@ -20,6 +21,7 @@ export default function AutoComplete({ data, setImage, setOpenModal }: Props) {
             className="flex flex-col items-center cursor-pointer"
             onClick={() => {
               setImage(result.poster_path);
+              setMovieTitle(result.title);
               setOpenModal(false);
             }}
           >

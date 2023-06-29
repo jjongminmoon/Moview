@@ -1,5 +1,5 @@
 import usePosts from "@/hooks/posts";
-import PostGridCard from "./GridCard";
+import GridCard from "./GridCard";
 
 export default function UserActivityGrid() {
   const { posts, isLoading } = usePosts();
@@ -7,12 +7,12 @@ export default function UserActivityGrid() {
   console.log(posts);
 
   return (
-    <div>
-      <ul className="grid grid-cols-3 gap-4 py-4">
+    <div className="min-h-screen">
+      <ul className="grid grid-cols-4 gap-4 py-4">
         {posts &&
           posts.map((post, index) => (
             <li key={post.id}>
-              <PostGridCard post={post} priority={index < 6} />
+              <GridCard post={post} priority={index < 6} />
             </li>
           ))}
       </ul>

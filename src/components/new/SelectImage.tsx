@@ -11,7 +11,7 @@ type Props = {
 export default function SelectImage({ image, setOpenModal }: Props) {
   return (
     <div
-      className="w-[45%] min-h-[550px] bg-white rounded-2xl cursor-pointer flex justify-center items-center"
+      className="w-[50%] min-h-[550px] bg-white cursor-pointer flex justify-center items-center"
       onClick={() => setOpenModal(true)}
     >
       {image.length > 0 ? (
@@ -23,9 +23,9 @@ export default function SelectImage({ image, setOpenModal }: Props) {
           height={2000}
         />
       ) : (
-        <p className="flex flex-col items-center gap-3 text-black text-2xl font-bold">
+        <p className="flex flex-col items-center gap-3 text-red-600 text-2xl font-bold">
           <ImageIcon />
-          영화 포스터를 선택하세요.
+          포스터 검색
         </p>
       )}
     </div>

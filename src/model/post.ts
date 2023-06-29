@@ -9,7 +9,9 @@ export type FullPost = {
   username: string;
   userImage: string;
   image: string;
-  text: string;
+  movieTitle: string;
+  postTitle: string;
+  content: string;
   createdAt: string;
   likes: string[];
   comments: Comment[];

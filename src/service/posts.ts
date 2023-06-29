@@ -6,8 +6,10 @@ const simplePostProjection = `
   "username": author->username,
   "userImage": author->image,
   "image": photo,
+  "movieTitle": movieTitle,
+  "postTitle": postTitle,
+  "content": content,
   "likes": likes[]->username,
-  "text": comments[0].comment,
   "comments": count(comments),
   "id":_id,
   "createdAt":_createdAt
@@ -21,13 +23,16 @@ export async function getPost(id: string) {
       "username": author->username,
       "userImage": author->image,
       "image": photo,
+      "movieTitle": movieTitle,
+      "postTitle": postTitle,
+      "content": content,
       "likes": likes[]->username,
       comments[]{comment, "username": author->username, "image": author->image},
       "id":_id,
       "createdAt":_createdAt
     }`
     )
-    .then((post) => ({ ...post, image: urlFor(post.image) }));
+    .then((post) => ({ ...post }));
 }
 
 export async function getPostsOf(username: string) {
@@ -55,7 +60,28 @@ export async function getLikedPostsOf(username: string) {
 function mapPosts(posts: SimplePost[]) {
   return posts.map((post: SimplePost) => ({
     ...post,
-    likes: post.likes ?? [],
-    image: urlFor(post.image)
+    likes: post.likes ?? []
   }));
+}
+
+export async function createPost(
+  userId: string,
+  image: string,
+  movieTitle: string,
+  postTitle: string,
+  content: string
+) {
+  return await client.create(
+    {
+      _type: "post",
+      author: { _ref: userId },
+      photo: image,
+      movieTitle: movieTitle,
+      postTitle: postTitle,
+      content: content,
+      comments: [],
+      likes: []
+    },
+    { autoGenerateArrayKeys: false }
+  );
 }
