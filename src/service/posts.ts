@@ -35,6 +35,22 @@ export async function getPost(id: string) {
     .then((post) => ({ ...post }));
 }
 
+export async function getPosts() {
+  return client.fetch(
+    `*[_type == "post"] | order(_createdAt desc){
+      ...,
+      "username": author->username,
+      "image": photo,
+      "movieTitle": movieTitle,
+      "postTitle": postTitle,
+      "likes": likes[]->username,
+      comments[]{comment},
+      "id":_id,
+      "createdAt":_createdAt
+    }`
+  );
+}
+
 export async function getPostsOf(username: string) {
   return client
     .fetch(

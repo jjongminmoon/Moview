@@ -1,6 +1,10 @@
-import { createPost } from "@/service/posts";
+import { createPost, getPosts } from "@/service/posts";
 import { withSessionUser } from "@/util/session";
 import { NextRequest, NextResponse } from "next/server";
+
+export async function GET() {
+  return getPosts().then((data) => NextResponse.json(data));
+}
 
 export async function POST(req: NextRequest) {
   return withSessionUser(async (user) => {

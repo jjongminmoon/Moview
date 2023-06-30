@@ -6,6 +6,7 @@ import { signIn, signOut, useSession } from "next-auth/react";
 import Avatar from "./Avatar";
 import NewIcon from "./icons/NewIcon";
 import Button from "./ui/Button";
+import Logo from "./ui/Logo";
 
 const navList = [
   { title: "홈", path: "/" },
@@ -19,7 +20,7 @@ export default function Navbar() {
 
   return (
     <Section className="flex items-center justify-between h-16 bg-stone-950">
-      <h1 className="text-3xl text-red-600 font-black italic font-mono">Moview</h1>
+      <Logo />
       <nav className="flex gap-10 items-center">
         {navList.map((list) => (
           <Link key={list.title} href={list.path} className="hover:text-red-600">
