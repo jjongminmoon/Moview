@@ -3,6 +3,7 @@ import { TmdbProps } from "@/model/movies";
 import Image, { StaticImageData } from "next/image";
 import comingUp from "../../../public/images/up-coming.webp";
 import { Dispatch, SetStateAction } from "react";
+import ClipSpinner from "../ui/ClipSpinner";
 
 type Props = {
   data: TmdbProps[] | undefined;

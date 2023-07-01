@@ -25,7 +25,7 @@ export default function NewPost() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string>();
   const debounceSearchValue = useDebounce(searchValue);
-  const { data, isLoading } = useSWR<TmdbProps[]>(getMovieSearchResult(debounceSearchValue));
+  const { data } = useSWR<TmdbProps[]>(getMovieSearchResult(debounceSearchValue));
   const router = useRouter();
 
   const handleSubmit = (e: FormEvent) => {
@@ -56,52 +56,46 @@ export default function NewPost() {
   };
 
   return (
-    <>
-      {isLoading ? (
-        <LoadingModal />
-      ) : (
-        <section className="bg-black p-10 rounded-xl">
-          {loading && <LoadingModal />}
-          <form className="flex flex-col gap-5" onSubmit={handleSubmit}>
-            <div className="flex gap-5">
-              <SelectImage image={image} setOpenModal={setOpenModal} />
-              <div className="flex flex-col w-full h-full gap-5">
-                <Input value={movieTitle} placeholder="영화 선택 시 자동으로 입력됩니다." />
-                <Input
-                  placeholder="제목을 작성해주세요."
-                  onChange={(e) => setPostTitle(e.target.value)}
-                  value={postTitle}
-                />
-                <textarea
-                  className="p-4 text-black text-sm rounded-xl"
-                  name="text"
-                  id="input-text"
-                  required
-                  rows={20}
-                  placeholder="리뷰를 작성해주세요."
-                  onChange={(e) => setContent(e.target.value)}
-                />
-              </div>
-            </div>
-            <Button type="submit" className="w-full mt-5">
-              완료
-            </Button>
-            {openModal && (
-              <ModalPortal>
-                <SelectImageModal onClose={() => setOpenModal(false)}>
-                  <SearchInput searchValue={searchValue} setSearchValue={setSearchValue} />
-                  <AutoComplete
-                    data={data}
-                    setImage={setImage}
-                    setMovieTitle={setMovieTitle}
-                    setOpenModal={setOpenModal}
-                  />
-                </SelectImageModal>
-              </ModalPortal>
-            )}
-          </form>
-        </section>
-      )}
-    </>
+    <section className="bg-black p-10 rounded-xl">
+      {loading && <LoadingModal />}
+      <form className="flex flex-col gap-5" onSubmit={handleSubmit}>
+        <div className="flex gap-5">
+          <SelectImage image={image} setOpenModal={setOpenModal} />
+          <div className="flex flex-col w-full h-full gap-5">
+            <Input value={movieTitle} placeholder="영화 선택 시 자동으로 입력됩니다." />
+            <Input
+              placeholder="제목을 작성해주세요."
+              onChange={(e) => setPostTitle(e.target.value)}
+              value={postTitle}
+            />
+            <textarea
+              className="p-4 text-black text-sm rounded-xl"
+              name="text"
+              id="input-text"
+              required
+              rows={20}
+              placeholder="리뷰를 작성해주세요."
+              onChange={(e) => setContent(e.target.value)}
+            />
+          </div>
+        </div>
+        <Button type="submit" className="w-full mt-5">
+          완료
+        </Button>
+        {openModal && (
+          <ModalPortal>
+            <SelectImageModal onClose={() => setOpenModal(false)}>
+              <SearchInput searchValue={searchValue} setSearchValue={setSearchValue} />
+              <AutoComplete
+                data={data}
+                setImage={setImage}
+                setMovieTitle={setMovieTitle}
+                setOpenModal={setOpenModal}
+              />
+            </SelectImageModal>
+          </ModalPortal>
+        )}
+      </form>
+    </section>
   );
 }

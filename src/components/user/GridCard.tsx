@@ -18,7 +18,7 @@ export default function GridCard({ post, priority = false }: Props) {
         height={2000}
         priority={priority}
       />
-      <p className="text-sm text-white w-full truncate text-center">{post.movieTitle}</p>
+      <p className="text-sm text-white w-full truncate text-center">{post.postTitle}</p>
     </div>
   );
 }

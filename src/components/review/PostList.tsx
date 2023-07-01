@@ -25,7 +25,12 @@ export default function PostList() {
 
   return (
     <div className="p-8 bg-black rounded-xl">
-      <PostListCard posts={currentPosts} />
+      <ul className="flex flex-col h-full gap-1">
+        {currentPosts &&
+          currentPosts.map((post, index) => (
+            <PostListCard post={post} index={index} key={post.id} />
+          ))}
+      </ul>
       <Paging count={count} postPerPage={postPerPage} page={currentPage} onChange={handlePage} />
     </div>
   );
