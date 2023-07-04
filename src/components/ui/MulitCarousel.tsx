@@ -19,37 +19,7 @@ export default function MultiCarousel({ children }: Props) {
     slidesToShow: 4,
     slidesToScroll: 1,
     swipeToSlide: true,
-    arrows: true,
-    responsive: [
-      {
-        breakpoint: 1440,
-        settings: {
-          slidesToShow: 4,
-          slidesToScroll: 1
-        }
-      },
-      {
-        breakpoint: 1280,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 1
-        }
-      },
-      {
-        breakpoint: 900,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1
-        }
-      },
-      {
-        breakpoint: 450,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1
-        }
-      }
-    ]
+    arrows: true
   };
 
   return (

@@ -9,6 +9,7 @@ type Props = {
 export default function CommentForm({ onPostComment }: Props) {
   const [comment, setComment] = useState("");
   const buttonDisabled = comment.length === 0;
+
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     onPostComment(comment);
@@ -27,7 +28,7 @@ export default function CommentForm({ onPostComment }: Props) {
       />
       <button
         disabled={buttonDisabled}
-        className={`font-bold ml-2 ${buttonDisabled ? "text-red-300" : "text-red-600"}`}
+        className={`font-bold mx-2 ${buttonDisabled ? "text-red-300" : "text-red-600"}`}
       >
         Comment
       </button>

@@ -1,19 +1,19 @@
 "use client";
 
-import { FormEvent, useState } from "react";
 import SearchInput from "../search/SearchInput";
 import useDebounce from "@/hooks/debounce";
 import useSWR from "swr";
-import { TmdbProps } from "@/model/movies";
-import { getMovieSearchResult } from "@/service/movies";
 import AutoComplete from "./AutoComplete";
 import ModalPortal from "../ui/ModalPortal";
 import SelectImageModal from "./SelectImageModal";
 import SelectImage from "./SelectImage";
 import Input from "./Input";
-import { useRouter } from "next/navigation";
 import Button from "../ui/Button";
-import LoadingModal from "../ui/LoadingModal";
+import Loading from "../ui/Loading";
+import { FormEvent, useState } from "react";
+import { TmdbProps } from "@/model/movies";
+import { getMovieSearchResult } from "@/service/movies";
+import { useRouter } from "next/navigation";
 
 export default function NewPost() {
   const [openModal, setOpenModal] = useState(false);
@@ -57,7 +57,7 @@ export default function NewPost() {
 
   return (
     <section className="bg-black p-10 rounded-xl">
-      {loading && <LoadingModal />}
+      {loading && <Loading />}
       <form className="flex flex-col gap-5" onSubmit={handleSubmit}>
         <div className="flex gap-5">
           <SelectImage image={image} setOpenModal={setOpenModal} />
@@ -85,7 +85,11 @@ export default function NewPost() {
         {openModal && (
           <ModalPortal>
             <SelectImageModal onClose={() => setOpenModal(false)}>
-              <SearchInput searchValue={searchValue} setSearchValue={setSearchValue} />
+              <SearchInput
+                searchValue={searchValue}
+                setSearchValue={setSearchValue}
+                placeholder="찾고 싶은 영화를 검색하세요."
+              />
               <AutoComplete
                 data={data}
                 setImage={setImage}

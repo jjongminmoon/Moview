@@ -1,16 +1,17 @@
 "use client";
 
-import Link from "next/link";
 import Section from "./ui/Section";
-import { signIn, signOut, useSession } from "next-auth/react";
-import Avatar from "./Avatar";
-import NewIcon from "./icons/NewIcon";
-import Button from "./ui/Button";
 import Logo from "./ui/Logo";
+import Link from "next/link";
+import NewIcon from "./icons/NewIcon";
+import Avatar from "./ui/Avatar";
+import Button from "./ui/Button";
+import { signIn, signOut, useSession } from "next-auth/react";
 
 const navList = [
   { title: "홈", path: "/" },
-  { title: "영화 검색", path: "/search" },
+  { title: "영화 검색", path: "/movieSearch" },
+  { title: "사용자 검색", path: "/userSearch" },
   { title: "리뷰", path: "/review" }
 ];
 
@@ -19,7 +20,7 @@ export default function Navbar() {
   const user = session?.user;
 
   return (
-    <Section className="flex items-center justify-between h-16 bg-stone-950">
+    <Section className="relative flex items-center justify-between h-16 bg-stone-950">
       <Logo />
       <nav className="flex gap-10 items-center">
         {navList.map((list) => (

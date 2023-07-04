@@ -1,6 +1,6 @@
-import { IMG_API } from "@/app/api/movies/movies";
 import Image from "next/image";
 import ImageIcon from "../icons/ImageIcon";
+import { IMG_API } from "@/app/api/movies/movies";
 import { Dispatch, SetStateAction } from "react";
 
 type Props = {
@@ -11,12 +11,12 @@ type Props = {
 export default function SelectImage({ image, setOpenModal }: Props) {
   return (
     <div
-      className="w-[50%] min-h-[550px] bg-white cursor-pointer flex justify-center items-center"
+      className="min-w-[400px] h-auto bg-white cursor-pointer flex justify-center items-center"
       onClick={() => setOpenModal(true)}
     >
       {image.length > 0 ? (
         <Image
-          className="w-full h-full"
+          className="w-full max-h-[576px]"
           src={IMG_API + image}
           alt="이미지 첨부"
           width={2000}

@@ -6,6 +6,7 @@ import Image from "next/image";
 import upComing from "../../../public/images/up-coming.webp";
 import Link from "next/link";
 import SearchInput from "./SearchInput";
+import Loading from "../ui/Loading";
 import { getMovieSearchResult } from "@/service/movies";
 import { useState } from "react";
 import { TmdbProps } from "@/model/movies";
@@ -18,9 +19,15 @@ export default function MovieSearch() {
 
   return (
     <>
-      <SearchInput searchValue={searchValue} setSearchValue={setSearchValue} icon="use" />
+      {isLoading && <Loading />}
+      <SearchInput
+        searchValue={searchValue}
+        setSearchValue={setSearchValue}
+        icon="use"
+        placeholder="찾고 싶은 영화를 검색하세요."
+      />
       {data && data.length > 0 ? (
-        <div className="grid grid-cols-4 gap-2 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2">
+        <div className="grid grid-cols-4 gap-2 bg-stone-950 p-4 rounded-2xl">
           {data.map((movies) => (
             <Link href={String(movies.id)} key={movies.id} className="flex flex-col">
               <Image

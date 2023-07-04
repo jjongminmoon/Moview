@@ -1,11 +1,11 @@
 "use client";
 
-import { useState } from "react";
 import HeartIcon from "../icons/HeartIcon";
 import PostsIcon from "../icons/PostsIcon";
+import UserActivityGrid from "./UserActivityGrid";
+import { useState } from "react";
 import { ProfileUser } from "@/model/user";
 import { CacheKeysContext } from "@/context/CacheKeysContext";
-import UserActivityGrid from "./UserActivityGrid";
 
 type Props = {
   user: ProfileUser;

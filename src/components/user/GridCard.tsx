@@ -1,6 +1,6 @@
+import Image from "next/image";
 import { IMG_API } from "@/app/api/movies/movies";
 import { SimplePost } from "@/model/post";
-import Image from "next/image";
 
 type Props = {
   post: SimplePost;

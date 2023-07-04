@@ -18,7 +18,7 @@ export default function PostDetailModal({ onClose, children }: Props) {
       <button className="fixed top-0 p-8 text-black" onClick={() => onClose()}>
         <CloseIcon />
       </button>
-      <div className="bg-black w-4/5 h-4/5 max-w-7xl z-100 p-5 rounded-xl">{children}</div>
+      <div className="bg-black w-[900px] h-4/5 max-w-7xl z-100 p-5 rounded-xl">{children}</div>
     </section>
   );
 }

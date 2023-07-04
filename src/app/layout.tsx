@@ -1,8 +1,8 @@
-import Navbar from "@/components/Navbar";
 import "./globals.css";
-import { Open_Sans } from "next/font/google";
+import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import AuthContext from "@/context/AuthContext";
+import { Open_Sans } from "next/font/google";
 import { SWRConfigContext } from "@/context/SWRConfigContext";
 
 const sans = Open_Sans({ subsets: ["latin"] });
@@ -15,9 +15,9 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={sans.className}>
-      <body>
+      <body className="min-w-[1280px]">
         <AuthContext>
-          <header className="sticky top-0 z-10">
+          <header className="sticky top-0 z-10 ">
             <Navbar />
           </header>
           <main className="min-h-screen">

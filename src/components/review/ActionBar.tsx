@@ -2,16 +2,15 @@
 
 import useMe from "@/hooks/me";
 import usePosts from "@/hooks/posts";
-import { Comment, SimplePost } from "@/model/post";
 import HeartFillIcon from "../icons/HeartFillIcon";
 import HeartEmptyIcon from "../icons/HeartEmptyIcon";
 import ToggleButton from "../ui/ToggleButton";
-import { useState } from "react";
 import MessageEmptyIcon from "../icons/MessageEmptyIcon";
 import MessageFillIcon from "../icons/MessageFillIcon";
 import Comments from "./Comments";
-import { Link } from "react-scroll";
 import CommentForm from "./CommentForm";
+import { Comment, SimplePost } from "@/model/post";
+import { useState } from "react";
 
 type Props = {
   post: SimplePost;

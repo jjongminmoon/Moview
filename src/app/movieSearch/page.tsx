@@ -2,7 +2,7 @@ import MovieSearch from "@/components/search/MovieSearch";
 import Section from "@/components/ui/Section";
 import Title from "@/components/ui/Title";
 
-export default function SearchPage() {
+export default function MovieSearchPage() {
   return (
     <Section>
       <Title className="my-8">영화 정보 검색</Title>

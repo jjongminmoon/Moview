@@ -1,3 +1,4 @@
+import { ProfileUser } from "@/model/user";
 import { client } from "./sanity";
 
 type OAuthUser = {
@@ -26,6 +27,25 @@ export async function getUserByUsername(username: string) {
       "id":_id,
     }`
   );
+}
+
+export async function searchUsers(keyword?: string) {
+  const query = keyword ? `&& (name match "${keyword}") || (username match "${keyword}")` : "";
+
+  return client
+    .fetch(
+      `*[_type == "user" ${query}]{
+    ...,
+    "id":_id,
+    "posts": count(*[_type == "post" && author->username == "${keyword}"])
+  }`
+    )
+    .then((users) =>
+      users.map((user: ProfileUser) => ({
+        ...user,
+        posts: user.posts ?? 0
+      }))
+    );
 }
 
 export async function getUserForProfile(username: string) {

@@ -12,8 +12,8 @@ export const getMovieCredit = (movie_id: string) => {
   return url;
 };
 
-export const getSimilarMovie = (movie_id: string) => {
-  const url = `${TMDB_API}/movie/${movie_id}/similar?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}&language=ko-KR&`;
+export const getRecommendationssMovie = (movie_id: string) => {
+  const url = `${TMDB_API}/movie/${movie_id}/recommendations?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}&language=ko-KR&`;
 
   return url;
 };

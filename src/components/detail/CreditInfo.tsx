@@ -1,8 +1,8 @@
-import { IMG_API } from "@/app/api/movies/movies";
-import { CreditProps } from "@/model/movies";
 import Image from "next/image";
 import upComing from "../../../public/images/up-coming.webp";
 import InfoBanner from "../ui/InfoBanner";
+import { IMG_API } from "@/app/api/movies/movies";
+import { CreditProps } from "@/model/movies";
 
 type Props = {
   credit: CreditProps | undefined;
@@ -10,7 +10,7 @@ type Props = {
 
 export default function CreditInfo({ credit }: Props) {
   return (
-    <section className="sm:text-center">
+    <section>
       <InfoBanner>출연진</InfoBanner>
       <ul className="flex gap-6 w-full overflow-auto p-3">
         {credit &&

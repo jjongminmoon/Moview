@@ -1,5 +1,5 @@
 import { SimplePost } from "@/model/post";
-import { client, urlFor } from "./sanity";
+import { client } from "./sanity";
 
 const simplePostProjection = `
   ...,

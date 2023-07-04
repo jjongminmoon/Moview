@@ -6,8 +6,6 @@ export type AuthUser = {
   image?: string;
 };
 
-export type SimpleUser = Pick<AuthUser, "username" | "image">;
-
 export type ProfileUser = AuthUser & {
   posts: number;
 };

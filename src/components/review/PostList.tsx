@@ -1,10 +1,11 @@
 "use client";
 
 import usePosts from "@/hooks/posts";
-import { SimplePost } from "@/model/post";
-import { useEffect, useState } from "react";
 import Paging from "./Paging";
 import PostListCard from "./PostListCard";
+import Loading from "../ui/Loading";
+import { SimplePost } from "@/model/post";
+import { useEffect, useState } from "react";
 
 export default function PostList() {
   const { posts, isLoading } = usePosts();
@@ -24,14 +25,17 @@ export default function PostList() {
   };
 
   return (
-    <div className="p-8 bg-black rounded-xl">
-      <ul className="flex flex-col h-full gap-1">
-        {currentPosts &&
-          currentPosts.map((post, index) => (
-            <PostListCard post={post} index={index} key={post.id} />
-          ))}
-      </ul>
-      <Paging count={count} postPerPage={postPerPage} page={currentPage} onChange={handlePage} />
-    </div>
+    <>
+      {isLoading && <Loading />}
+      <div className="p-8 bg-black rounded-xl">
+        <ul className="flex flex-col h-full gap-1">
+          {currentPosts &&
+            currentPosts.map((post, index) => (
+              <PostListCard post={post} index={index} key={post.id} />
+            ))}
+        </ul>
+        <Paging count={count} postPerPage={postPerPage} page={currentPage} onChange={handlePage} />
+      </div>
+    </>
   );
 }
