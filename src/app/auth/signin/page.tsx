@@ -3,6 +3,12 @@ import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { getServerSession } from "next-auth";
 import { getProviders } from "next-auth/react";
 import { redirect } from "next/navigation";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "로그인/회원가입",
+  description: "Moview 로그인/회원가입 페이지입니다."
+};
 
 type Props = {
   searchParams: {

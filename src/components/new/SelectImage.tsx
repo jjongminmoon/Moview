@@ -11,12 +11,12 @@ type Props = {
 export default function SelectImage({ image, setOpenModal }: Props) {
   return (
     <div
-      className="min-w-[400px] h-auto bg-white cursor-pointer flex justify-center items-center"
+      className="min-w-[400px] h-[576px] bg-white cursor-pointer flex justify-center items-center"
       onClick={() => setOpenModal(true)}
     >
       {image.length > 0 ? (
         <Image
-          className="w-full max-h-[576px]"
+          className="w-full h-full"
           src={IMG_API + image}
           alt="이미지 첨부"
           width={2000}
