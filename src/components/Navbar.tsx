@@ -7,6 +7,7 @@ import NewIcon from "./icons/NewIcon";
 import Avatar from "./ui/Avatar";
 import Button from "./ui/Button";
 import { signIn, signOut, useSession } from "next-auth/react";
+import { usePathname } from "next/navigation";
 
 const navList = [
   { title: "홈", path: "/" },
@@ -18,13 +19,18 @@ const navList = [
 export default function Navbar() {
   const { data: session } = useSession();
   const user = session?.user;
+  const pathname = usePathname();
 
   return (
     <Section className="relative flex items-center justify-between h-16 bg-stone-950">
       <Logo />
       <nav className="flex gap-10 items-center">
         {navList.map((list) => (
-          <Link key={list.title} href={list.path} className="hover:text-red-600">
+          <Link
+            key={list.title}
+            href={list.path}
+            className={`hover:text-red-600 ${list.path === pathname && "text-red-600 font-bold"}`}
+          >
             {list.title}
           </Link>
         ))}
