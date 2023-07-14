@@ -29,7 +29,7 @@ export default function Navbar() {
           <Link
             key={list.title}
             href={list.path}
-            className={`hover:text-red-600 ${list.path === pathname && "text-red-600 font-bold1"}`}
+            className={`hover:text-red-600 ${list.path === pathname && "text-red-600 font-bold"}`}
           >
             {list.title}
           </Link>

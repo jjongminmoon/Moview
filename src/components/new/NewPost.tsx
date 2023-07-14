@@ -15,7 +15,7 @@ import { TmdbProps } from "@/model/movies";
 import { getMovieSearchResult } from "@/service/movies";
 import { useRouter } from "next/navigation";
 
-export default function NewPost() {
+export default async function NewPost() {
   const [openModal, setOpenModal] = useState(false);
   const [image, setImage] = useState<string>("");
   const [movieTitle, setMovieTitle] = useState<string>("");
@@ -30,7 +30,6 @@ export default function NewPost() {
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-
     setLoading(true);
     const formData = new FormData();
     formData.append("photo", image);
